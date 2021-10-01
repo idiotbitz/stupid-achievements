@@ -446,7 +446,8 @@ class sa_Task abstract
 
   bool isFinished(int levelTime) const
   {
-    return levelTime > mBirthTime + mAchievement.lifetime;
+    if ((mAchievement) && (mBirthTime)) {return levelTime > mBirthTime + mAchievement.lifetime;}
+	else {return true;}
   }
 
   void start()
@@ -471,7 +472,7 @@ class sa_Task abstract
 
   protected String    mText;
   protected int       mNLines;
-  protected Font      mFont;
+  protected transient Font      mFont;
   protected TextureID mTexture;
 
   protected int mBirthTime;
